@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class AdminAuthController extends Controller
+{
+    public function showLoginForm()
+    {
+        return view('admin.auth.login');
+    }
+
+    public function login(Request $request)
+    {
+        $data = $request->validate([
+            'email'=>'required|email',
+            'password'=>'required'
+        ]);
+
+        if (Auth::attempt(['email'=>$data['email'],'password'=>$data['password']])) {
+            $user = $request->user();
+            if ($user->role !== 'admin') {
+                Auth::logout();
+                return back()->withErrors(['email'=>'User bukan admin']);
+            }
+            $request->session()->regenerate();
+            // Log system login
+            app(\App\Services\SystemLogService::class)->log($user->id, 'login', 'Admin logged in from web', $request->ip());
+            return redirect()->intended(route('admin.dashboard'));
+        }
+
+        return back()->withErrors(['email'=>'Login gagal']);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('admin.login');
+    }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\xampp\htdocs\laravel\PROJEK APLIKASI\delivery\phpunit.xml.dist" tests="5" assertions="15" errors="0" failures="0" skipped="0" time="4.492585">
+    <testsuite name="Feature" tests="5" assertions="15" errors="0" failures="0" skipped="0" time="4.492585">
+      <testsuite name="Tests\Feature\AdminCrudTest" file="C:\xampp\htdocs\laravel\PROJEK APLIKASI\delivery\tests\Feature\AdminCrudTest.php" tests="5" assertions="15" errors="0" failures="0" skipped="0" time="4.492585">
+        <testcase name="test_admin_can_create_category_and_product_with_category" file="C:\xampp\htdocs\laravel\PROJEK APLIKASI\delivery\tests\Feature\AdminCrudTest.php" line="29" class="Tests\Feature\AdminCrudTest" classname="Tests.Feature.AdminCrudTest" assertions="5" time="1.567895"/>
+        <testcase name="test_admin_can_create_banner" file="C:\xampp\htdocs\laravel\PROJEK APLIKASI\delivery\tests\Feature\AdminCrudTest.php" line="52" class="Tests\Feature\AdminCrudTest" classname="Tests.Feature.AdminCrudTest" assertions="2" time="1.220432"/>
+        <testcase name="test_admin_can_create_mitra_with_bank_fields" file="C:\xampp\htdocs\laravel\PROJEK APLIKASI\delivery\tests\Feature\AdminCrudTest.php" line="63" class="Tests\Feature\AdminCrudTest" classname="Tests.Feature.AdminCrudTest" assertions="2" time="0.542860"/>
+        <testcase name="test_admin_can_create_driver_with_bank_fields" file="C:\xampp\htdocs\laravel\PROJEK APLIKASI\delivery\tests\Feature\AdminCrudTest.php" line="73" class="Tests\Feature\AdminCrudTest" classname="Tests.Feature.AdminCrudTest" assertions="2" time="0.584100"/>
+        <testcase name="test_admin_can_upload_product_image" file="C:\xampp\htdocs\laravel\PROJEK APLIKASI\delivery\tests\Feature\AdminCrudTest.php" line="83" class="Tests\Feature\AdminCrudTest" classname="Tests.Feature.AdminCrudTest" assertions="4" time="0.577298"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

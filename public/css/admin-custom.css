@@ -1,0 +1,167 @@
+/* Custom color palette to match logo: soft/pastel pink, blue, white, soft pink */
+:root{
+  /* Abstrak pink tipis: soft, pastel, subtle for UI accents */
+  --brand-pink: #ff9acb; /* soft pink */
+  --brand-pink-strong: #ff6fa8; /* slightly stronger for accents */
+  --brand-blue: #007bff;
+  --brand-white: #ffffff;
+  --brand-lightpink: #fff4f9; /* very pale pink background */
+
+  /* supplemental pastel colors for new cards */
+  --brand-green: #d7f7e3;
+  --brand-orange: #ffe9d1;
+  --brand-purple: #efe6ff;
+
+  --text-on-pastel: #2b2b2b; /* darker text for contrast on pastel backgrounds */
+}
+
+body{font-family: Arial, Helvetica, sans-serif;background:#f8fafc;color:#222}
+.admin-topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:var(--brand-white);border-bottom:1px solid #eee}
+.admin-wrapper{display:flex;min-height:calc(100vh - 60px)}
+/* Sidebar: fixed-height and scrollable to handle long menus on all viewports */
+.admin-sidebar{width:220px;background:linear-gradient(180deg,var(--brand-lightpink),var(--brand-white));padding:20px;height:calc(100vh - 60px);overflow-y:auto}
+.admin-sidebar::-webkit-scrollbar{width:8px}
+.admin-sidebar::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:6px}
+.admin-sidebar .nav{list-style:none;padding:0;margin:0}
+.admin-sidebar .nav li{margin-bottom:8px}
+.admin-sidebar .nav a{color:#333;text-decoration:none;display:block;padding:8px;border-radius:6px}
+.admin-sidebar .nav a.nav-link{display:flex;align-items:center;gap:10px;padding:10px;border-radius:8px;color:#333;font-weight:500}
+.admin-sidebar .nav a.nav-link i{width:22px;text-align:center;font-size:18px;color:var(--brand-pink)}
+.admin-sidebar .nav a.nav-link .nav-label{flex:1}
+/* Make nav links occupy full horizontal space and use left-accent (no floating bubble) */
+.admin-sidebar .nav a.nav-link{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:8px;width:100%;box-sizing:border-box;transition:background .12s ease,color .12s ease;position:relative}
+.admin-sidebar .nav a.nav-link:hover{background:rgba(255,45,149,0.06);text-decoration:none}
+
+/* left accent indicator (no layout shift) */
+.admin-sidebar .nav a.nav-link::before{content:'';position:absolute;left:6px;top:8px;height:calc(100% - 16px);width:0;border-radius:4px;transition:width .12s ease,background .12s ease}
+.admin-sidebar .nav a.nav-link.active::before{width:4px;background:var(--brand-pink)}
+
+.admin-sidebar .nav a.nav-link.active{background:rgba(255,45,149,0.08);color:var(--brand-pink);font-weight:700}
+
+/* Users and Mitras are stacked vertically — nav-group (side-by-side layout) removed to ensure consistent vertical menu */
+
+/* Accessibility focus */
+.admin-sidebar .nav a.nav-link:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(255,45,149,0.10)}
+
+/* Small screens: stack them vertically */
+@media (max-width:600px){
+  .admin-sidebar .nav .nav-group{flex-direction:column}
+  .admin-sidebar{width:200px}
+}
+.admin-content{flex:1;padding:20px}
+.page-title{margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.card{border-radius:8px;padding:12px}
+.card .card-body{padding:12px}
+.card-pink{
+  background: linear-gradient(135deg, rgba(255,154,203,0.12), rgba(255,111,164,0.06));
+  border: 1px solid rgba(255,111,164,0.14);
+  color: var(--text-on-pastel);
+}
+.card-blue{background:var(--brand-blue);color:var(--brand-white)}
+.card-white{background:var(--brand-white);border:1px solid #eee}
+.card-lightpink{
+  background: var(--brand-lightpink);
+  color: var(--text-on-pastel);
+}
+
+/* Pastel card variants for added metrics */
+.card-green{background:var(--brand-green);color:var(--text-on-pastel);border:1px solid rgba(34,139,87,0.06)}
+.card-orange{background:var(--brand-orange);color:var(--text-on-pastel);border:1px solid rgba(255,140,0,0.06)}
+.card-purple{background:var(--brand-purple);color:var(--text-on-pastel);border:1px solid rgba(111,66,193,0.06)}
+
+/* Ensure headings in pastel cards are prominent */
+.card .card-body h3{font-size:24px;margin:0 0 6px;font-weight:700}
+.card .card-body p{margin:0;color:#8b9ab0}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:8px;border-bottom:1px solid #eee}
+.btn{padding:6px 10px;border:none;border-radius:4px;text-decoration:none;background:var(--brand-blue);color:white}
+.btn-outline{background:transparent;border:1px solid #ddd;padding:6px 10px;border-radius:4px}
+.btn-sm{padding:4px 8px;font-size:13px}
+.login-container{display:flex;align-items:center;justify-content:center;height:100vh}
+.login-box{width:360px;padding:20px;border-radius:8px;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,0.05)}
+
+/* Fallback modal styles for non-Bootstrap environments */
+.modal{display:none;position:fixed;z-index:9999;left:0;top:0;width:100%;height:100%;overflow:auto}
+.modal .modal-dialog{position:relative;width:560px;margin:60px auto}
+.modal.open{display:block}
+body.modal-open{overflow:hidden}
+
+/* Marketing submenu styles */
+.admin-sidebar .nav .nav-group .nav-sub{display:none;list-style:none;padding-left:8px;margin:6px 0}
+.admin-sidebar .nav .nav-group.open > .nav-sub{display:block}
+.admin-sidebar .nav .nav-sub .nav-link{padding-left:36px;display:block;color:#444;background:transparent;border-radius:6px;font-weight:500}
+.admin-sidebar .nav .nav-sub .nav-link.active{color:var(--brand-pink);background:rgba(255,45,149,0.03)}
+
+/* Make parent nav-group clickable and add caret icon */
+.admin-sidebar .nav .nav-group > .nav-link{cursor:pointer;position:relative}
+.admin-sidebar .nav .nav-group > .nav-link::after{content:'\25BC';font-size:12px;position:absolute;right:16px;top:50%;transform:translateY(-50%);transition:transform .12s ease;color:#777}
+.admin-sidebar .nav .nav-group.open > .nav-link::after{transform:translateY(-50%) rotate(180deg);color:var(--brand-pink)}
+
+/* Responsive additions */
+.admin-sidebar.collapsed{width:64px;overflow:hidden}
+.admin-sidebar.collapsed .nav-link .nav-label{display:none}
+.admin-sidebar .nav-link .nav-label{transition:opacity .12s}
+
+/* Sidebar toggle button */
+.sidebar-toggle{display:none;background:transparent;border:0;color:inherit;font-size:18px;padding:6px;margin-left:8px}
+
+/* Small screens adjustments */
+@media (max-width:800px){
+  .admin-wrapper{flex-direction:column}
+  .admin-sidebar{position:fixed;left:0;top:60px;height:calc(100% - 60px);z-index:1000;transform:translateX(0);transition:transform .2s ease}
+  .admin-sidebar.collapsed{transform:translateX(-100%)}
+  .admin-topbar{justify-content:space-between}
+  .sidebar-toggle{display:inline-block}
+  .admin-content{padding:12px;margin-top:60px}
+}
+
+/* Make tables scrollable on small screens */
+.table-responsive{overflow-x:auto}
+.dataTables_wrapper{width:100%;overflow-x:auto}
+
+/* Modal full-screen on small */
+@media (max-width:576px){
+  .modal{left:0;top:0;transform:none;width:100%;height:100%;border-radius:0;padding:12px}
+  .modal .modal-dialog{width:100%;height:100%;margin:0}
+  .modal .modal-header{position:sticky;top:0;background:var(--brand-white);z-index:3}
+  .modal .modal-footer{position:sticky;bottom:0;background:var(--brand-white);z-index:3}
+  .modal .modal-footer .btn{width:100%;display:block;margin-bottom:8px}
+}
+
+/* Buttons and inputs on small screens */
+@media (max-width:600px){
+  .btn{padding:8px 12px;font-size:14px}
+  input,select,textarea{width:100%}
+}
+
+/* Login tabs styling */
+.login-tabs{display:flex;gap:10px;justify-content:center;margin-bottom:16px}
+.login-tabs .tab{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:8px;border:1px solid #e6e6e6;text-decoration:none;color:#333;background:transparent;transition:all .12s ease;box-shadow:none}
+.login-tabs .tab:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,0.06)}
+.login-tabs .tab span{font-weight:600}
+
+/* Mitra specific login box */
+.login-box-mitra{width:420px;max-width:92%;padding:28px;border-radius:12px;background:#fff;box-shadow:0 12px 30px rgba(0,0,0,0.08);}
+.login-box-mitra .logo{text-align:center;margin-bottom:12px}
+.login-box-mitra .page-title{font-size:22px;margin:6px 0 12px;font-weight:700}
+.login-box-mitra .form-group{margin-bottom:12px}
+.login-box-mitra .form-control{width:100%;padding:8px;border-radius:6px;border:1px solid #e6e9ef;background:#f0f6fb}
+.login-box-mitra .btn-block{display:block;width:100%}
+
+/* Role color accents */
+.login-tabs .tab-admin{border-color:var(--brand-pink)}
+.login-tabs .tab-driver{border-color:var(--brand-blue)}
+.login-tabs .tab-mitra{border-color:#28a745}
+.login-tabs .tab-customer{border-color:#6f42c1}
+
+/* Active states */
+.login-tabs .tab.active{background:linear-gradient(90deg,rgba(0,0,0,0.03),rgba(0,0,0,0.01));font-weight:700}
+.login-tabs .tab-admin.active{background:linear-gradient(90deg, rgba(255,45,149,0.12), rgba(255,45,149,0.04));color:var(--brand-pink);border-color:var(--brand-pink)}
+.login-tabs .tab-driver.active{background:linear-gradient(90deg, rgba(0,123,255,0.12), rgba(0,123,255,0.04));color:var(--brand-blue);border-color:var(--brand-blue)}
+.login-tabs .tab-mitra.active{background:linear-gradient(90deg, rgba(40,167,69,0.12), rgba(40,167,69,0.04));color:#28a745;border-color:#28a745}
+.login-tabs .tab-customer.active{background:linear-gradient(90deg, rgba(111,66,193,0.12), rgba(111,66,193,0.04));color:#6f42c1;border-color:#6f42c1}
+
+/* Ensure DataTables responsive plays nicely */
+table.dataTable tbody td{word-break:break-word}
+
