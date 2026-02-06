@@ -27,6 +27,8 @@ Route::prefix('admin')->group(function () {
         // Auth
         Route::post('register', [\App\Http\Controllers\Api\Mobile\AuthController::class, 'register'])->middleware('throttle:10,1');
         Route::post('login', [\App\Http\Controllers\Api\Mobile\AuthController::class, 'login'])->middleware('throttle:10,1');
+        // Public product listing per mitra (no auth required)
+        Route::get('mitras/{mitra}/products', [\App\Http\Controllers\Api\Mobile\CustomerController::class, 'products']);
 
         // Protected mobile routes
         Route::middleware(['auth:sanctum'])->group(function () {
@@ -34,7 +36,6 @@ Route::prefix('admin')->group(function () {
 
             // Customer
             Route::get('mitras/nearby', [\App\Http\Controllers\Api\Mobile\CustomerController::class, 'listMitras']);
-            Route::get('mitras/{mitra}/products', [\App\Http\Controllers\Api\Mobile\CustomerController::class, 'products']);
             Route::post('orders', [\App\Http\Controllers\Api\Mobile\CustomerController::class, 'createOrder']);
             Route::post('apply-promo', [\App\Http\Controllers\Api\PromoApplyController::class, 'apply']);
 
